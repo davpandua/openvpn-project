@@ -21,4 +21,4 @@ WORKDIR /home/openvpn
 # Expose ports
 EXPOSE 1194 943 945
 ADD openvpn/server.conf /etc/openvpn/server/
-ENTRYPOINT openvpn /etc/openvpn/server.conf
+ENTRYPOINT "openvpn /etc/openvpn/server/server.conf"
