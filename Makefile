@@ -15,4 +15,9 @@ stop:
 bash:
 	@docker exec -it $(NAME) /bin/bash
 
+logs:
+	@docker logs $(NAME)
+
+gen-ca:
+	@echo "en proceso" 
 
