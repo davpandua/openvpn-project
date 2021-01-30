@@ -18,6 +18,8 @@ bash:
 logs:
 	@docker logs $(NAME)
 
+test: stop build run logs
+
 gen-ca:
 	@echo "en proceso" 
 
