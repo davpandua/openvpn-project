@@ -21,5 +21,5 @@ logs:
 test: stop build run logs
 
 gen-ca:
-	@echo "en proceso" 
+	@echo "Generacion de claves y certificados en proceso" 
 
