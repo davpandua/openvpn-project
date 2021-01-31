@@ -9,7 +9,7 @@ build:
 	@docker build -t="$(REPOSITORY):$(TAG)" .
 
 run:
-	@docker run -d -t --name $(NAME) -p 4500:1194 -v $(DIR)/keys:/etc/openvpn/keys $(REPOSITORY):$(TAG)
+	@docker run -d -t --name $(NAME) --cap-add=NET_ADMIN --device=/dev/net/tun -p 4500:1194 -v $(ACTUALDIR)/keys:/etc/openvpn/keys $(REPOSITORY):$(TAG)
 
 stop:
 	@docker stop $(NAME)
@@ -29,6 +29,7 @@ gen-ca:
 	docker run -it --rm --name $(KEYCONT) --privileged -v $(ACTUALDIR)/keys:/usr/share/easy-rsa/localkeys --entrypoint /bin/generate-ca.sh \
 	$(REPOSITORY):$(TAG)
 	sudo chown -R $(USER):$(USER) keys
+
 
 gen-server:
 	docker run -it --rm --name $(KEYCONT) --privileged -v $(ACTUALDIR)/keys:/usr/share/easy-rsa/localkeys --entrypoint /bin/generate-server-ca.sh \

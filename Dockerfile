@@ -24,4 +24,4 @@ EXPOSE 1194 943 945
 ADD openvpn/server.conf /etc/openvpn/server/
 ADD openvpn/generate-ca.sh /bin/
 ADD openvpn/generate-server-ca.sh /bin/
-#ENTRYPOINT openvpn /etc/openvpn/server/server.conf
+ENTRYPOINT openvpn /etc/openvpn/server/server.conf
