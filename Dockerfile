@@ -18,8 +18,10 @@ RUN mkdir /home/openvpn
 RUN updatedb
 RUN ln -s /usr/share/easy-rsa/openssl-1.0.0.cnf /usr/share/easy-rsa/openssl.cnf 
 ADD openvpn/vars /usr/share/easy-rsa/vars
-WORKDIR /home/openvpn
+WORKDIR /etc/openvpn
 # Expose ports
 EXPOSE 1194 943 945
 ADD openvpn/server.conf /etc/openvpn/server/
-ENTRYPOINT openvpn /etc/openvpn/server/server.conf
+ADD openvpn/generate-ca.sh /bin/
+ADD openvpn/generate-server-ca.sh /bin/
+#ENTRYPOINT openvpn /etc/openvpn/server/server.conf
